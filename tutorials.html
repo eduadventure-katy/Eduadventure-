@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tutorials - EduAdventure</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      color: #fff;
+      background: url("tutorials.jpg") no-repeat center center/cover;
+      min-height: 100vh;
+      text-align: center;
+      backdrop-filter: brightness(0.8);
+    }
+
+    header {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 0 10px #00ffe0;
+    }
+
+    header a {
+      color: #00ffe0;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 18px;
+      transition: 0.3s;
+    }
+
+    header a:hover {
+      color: #fff;
+    }
+
+    h2 {
+      margin-top: 30px;
+      text-shadow: 2px 2px 5px #000;
+      color: #00ffe0;
+      letter-spacing: 1px;
+    }
+
+    .topics-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      padding: 40px;
+    }
+
+    .topic-card {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0, 255, 224, 0.5);
+      transition: 0.3s;
+    }
+
+    .topic-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px #00ffe0;
+    }
+
+    .topic-card h3 {
+      color: #00ffe0;
+      margin-bottom: 10px;
+    }
+
+    .topic-card p {
+      font-size: 15px;
+      opacity: 0.9;
+      margin-bottom: 15px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #00ffe0;
+      color: #000;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #00b8a9;
+      color: #fff;
+    }
+
+    footer {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 10px;
+      color: #aaa;
+      text-align: center;
+      font-size: 14px;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="logo">🏠 Home</a>
+    <h2>EduAdventure Tutorials</h2>
+  </header>
+
+  <main>
+    <h2>📘 Programming Tutorials</h2>
+    <p style="opacity: 0.9;">Watch and learn programming languages step by step! 🚀</p>
+
+    <div class="topics-container">
+
+      <div class="topic-card">
+        <h3>HTML Basics</h3>
+        <p>Learn HTML tags, structure, forms, and images.</p>
+        <a href="https://www.youtube.com/watch?v=pQN-pnXPaVg" target="_blank" class="btn">Watch Video</a>
+      </div>
+
+      <div class="topic-card">
+        <h3>CSS Basics</h3>
+        <p>Learn styling, colors, layouts, and animations.</p>
+        <a href="https://www.youtube.com/watch?v=1Rs2ND1ryYc" target="_blank" class="btn">Watch Video</a>
+      </div>
+
+      <div class="topic-card">
+        <h3>JavaScript Basics</h3>
+        <p>Variables, loops, functions, and events in JS.</p>
+        <a href="https://www.youtube.com/watch?v=W6NZfCO5SIk" target="_blank" class="btn">Watch Video</a>
+      </div>
+
+      <div class="topic-card">
+        <h3>Python Basics</h3>
+        <p>Variables, loops, functions, and OOP concepts.</p>
+        <a href="https://www.youtube.com/watch?v=_uQrJ0TkZlc" target="_blank" class="btn">Watch Video</a>
+      </div>
+
+      <div class="topic-card">
+        <h3>Java Basics</h3>
+        <p>Learn Java syntax, classes, loops, and arrays.</p>
+        <a href="https://www.youtube.com/watch?v=grEKMHGYyns" target="_blank" class="btn">Watch Video</a>
+      </div>
+
+      <div class="topic-card">
+        <h3>C++ Basics</h3>
+        <p>Learn variables, loops, arrays, and OOP.</p>
+        <a href="https://www.youtube.com/watch?v=vLnPwxZdW4Y" target="_blank" class="btn">Watch Video</a>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    © 2025 EduAdventure | Learn. Code. Explore. 🚀
+  </footer>
+
+</body>
+</html>

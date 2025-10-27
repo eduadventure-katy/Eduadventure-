@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz Adventure - EduAdventure</title>
+<style>
+body {
+  margin:0;
+  font-family: "Poppins", sans-serif;
+  color: #fff;
+  background: url("quiz.jpg") no-repeat center center/cover;
+  background-size: cover;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  backdrop-filter: brightness(0.85);
+}
+header {
+  background: rgba(0,0,0,0.7);
+  padding: 15px 30px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 0 10px #00ffe0;
+}
+header a {
+  color: #00ffe0;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+header a:hover { color: #fff; }
+.quiz-container {
+  margin-top: 100px;
+  background: rgba(0,0,0,0.75);
+  padding: 30px 40px;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 600px;
+  box-shadow: 0 0 25px rgba(0,255,224,0.5);
+  animation: fadeIn 1s ease;
+}
+h2 { color: #00ffe0; text-shadow: 0 0 10px #00ffe0; margin-bottom: 20px; }
+#question { font-size: 18px; margin-bottom: 20px; }
+#options button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  background: rgba(0,255,224,0.1);
+  color: #fff;
+  border: 2px solid #00ffe0;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+#options button:hover { background: #00ffe0; color: #000; transform: scale(1.05); }
+#next-btn {
+  background: #00ffe0;
+  color: #000;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 15px;
+  transition: 0.3s;
+}
+#next-btn:hover { background: #00b8a9; color: #fff; transform: scale(1.05); }
+#score {
+  margin-top: 15px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #00ffe0;
+  text-shadow: 0 0 10px #00ffe0;
+}
+.correct-answer {
+  margin-top: 10px;
+  font-size: 16px;
+  color: yellow;
+}
+@keyframes fadeIn { from { opacity: 0; transform: translateY(-20px); } to { opacity:1; transform: translateY(0); } }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="index.html">🏠 Home</a>
+  <h3>EduAdventure Quiz</h3>
+</header>
+
+<main class="quiz-container">
+  <h2>🏆 Quiz Adventure</h2>
+  <div id="quiz-box">
+    <p id="question">Loading question...</p>
+    <div id="options"></div>
+    <p class="correct-answer" id="correct-info"></p>
+  </div>
+  <button id="next-btn">Next</button>
+  <p id="score"></p>
+</main>
+
+<script>
+const quizData = [
+  // HTML
+  {question:"What does HTML stand for?", options:["HyperText Markup Language","HighText Machine Language","Hyper Tool Multi Language","None of the above"], answer:"HyperText Markup Language"},
+  {question:"Which tag defines a paragraph?", options:["<p>","<div>","<span>","<section>"], answer:"<p>"},
+  // CSS
+  {question:"Which property changes text color?", options:["color","background","font-style","border"], answer:"color"},
+  {question:"Which layout uses 'display: flex'?", options:["Flexbox","Grid","Block","Inline"], answer:"Flexbox"},
+  // JS
+  {question:"How to write an alert in JS?", options:["alert('Hi');","msg('Hi');","alertBox('Hi');","prompt('Hi');"], answer:"alert('Hi');"},
+  {question:"Which keyword declares a variable?", options:["var","let","const","All of the above"], answer:"All of the above"},
+  // Python
+  {question:"Define a function in Python?", options:["function myFunc():","def myFunc():","func myFunc():","define myFunc():"], answer:"def myFunc():"},
+  {question:"Key-value pairs in Python?", options:["List","Dictionary","Tuple","Set"], answer:"Dictionary"},
+  // Java
+  {question:"Keyword for inheritance in Java?", options:["extends","implements","inherits","super"], answer:"extends"},
+  {question:"Java is a ...", options:["Procedural","Object-Oriented","Markup","Database"], answer:"Object-Oriented"},
+  // C++
+  {question:"C++ file extension?", options:[".cpp",".cxx",".cc",".All of the above"], answer:".All of the above"},
+  {question:"Operator for output in C++?", options:["<<","<","=>","->"], answer:"<<"},
+  // SQL
+  {question:"Retrieve data in SQL?", options:["SELECT","INSERT","UPDATE","DELETE"], answer:"SELECT"},
+  {question:"Filter results in SQL?", options:["WHERE","FROM","GROUP BY","ORDER BY"], answer:"WHERE"},
+  // Git
+  {question:"Stage changes in Git?", options:["git commit","git push","git add","git clone"], answer:"git add"},
+  {question:"Git platform online?", options:["GitHub","GitLab","Bitbucket","All of the above"], answer:"All of the above"},
+  // Algorithms
+  {question:"Big O of linear search?", options:["O(1)","O(log n)","O(n)","O(n^2)"], answer:"O(n)"},
+  {question:"Sorting with divide and conquer?", options:["Bubble Sort","Merge Sort","Selection Sort","Insertion Sort"], answer:"Merge Sort"},
+  // Data Structures
+  {question:"FIFO data structure?", options:["Stack","Queue","Array","Tree"], answer:"Queue"},
+  {question:"LIFO data structure?", options:["Stack","Queue","Array","Tree"], answer:"Stack"}
+];
+
+let score = 0;
+let currentQuestion = 0;
+
+// Shuffle questions for random order
+function shuffle(array){ return array.sort(()=>Math.random()-0.5); }
+let questions = shuffle([...quizData]);
+
+const questionEl = document.getElementById("question");
+const optionsEl = document.getElementById("options");
+const nextBtn = document.getElementById("next-btn");
+const scoreEl = document.getElementById("score");
+const correctInfo = document.getElementById("correct-info");
+
+function showQuestion(){
+  correctInfo.textContent = "";
+  const q = questions[currentQuestion];
+  questionEl.textContent = q.question;
+  optionsEl.innerHTML = "";
+  q.options.forEach(opt=>{
+    const btn = document.createElement("button");
+    btn.textContent = opt;
+    btn.onclick = ()=>selectAnswer(btn,q.answer);
+    optionsEl.appendChild(btn);
+  });
+}
+
+function selectAnswer(button, correct){
+  if(button.textContent === correct){
+    button.style.background="limegreen";
+    score++;
+  }else{
+    button.style.background="crimson";
+    correctInfo.textContent = `Correct Answer: ${correct}`;
+  }
+  Array.from(optionsEl.children).forEach(btn=>btn.disabled=true);
+}
+
+nextBtn.addEventListener("click", ()=>{
+  currentQuestion++;
+  if(currentQuestion<questions.length){
+    showQuestion();
+  }else{
+    questionEl.textContent = "🎉 Quiz Completed!";
+    optionsEl.innerHTML = "";
+    correctInfo.textContent = "";
+    scoreEl.textContent = `Your score: ${score}/${questions.length}`;
+    nextBtn.textContent="Restart Quiz";
+    nextBtn.onclick = ()=>{
+      // Reset
+      currentQuestion=0;
+      score=0;
+      questions = shuffle([...quizData]);
+      nextBtn.textContent="Next";
+      showQuestion();
+      scoreEl.textContent="";
+    };
+  }
+});
+
+showQuestion();
+</script>
+
+</body>
+</html>

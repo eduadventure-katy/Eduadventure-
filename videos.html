@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Video Lessons - EduAdventure</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+  body {
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    padding: 0;
+    background: url("videos.jpg") no-repeat center center/cover;
+    color: #fff;
+    text-align: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  header {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 15px;
+    text-align: left;
+  }
+
+  header a {
+    color: #00ffe0;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1em;
+  }
+
+  .video-container {
+    background: rgba(0, 0, 0, 0.6);
+    margin: 40px auto;
+    padding: 30px;
+    border-radius: 15px;
+    width: 85%;
+    max-width: 1100px;
+    box-shadow: 0 0 25px rgba(0, 255, 224, 0.4);
+  }
+
+  h2 {
+    color: #00ffe0;
+    margin-bottom: 25px;
+  }
+
+  .video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+  }
+
+  .video-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(0, 255, 224, 0.4);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 255, 224, 0.3);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .video-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(0, 255, 224, 0.7);
+  }
+
+  iframe {
+    width: 100%;
+    height: 200px;
+    border: none;
+  }
+
+  p {
+    background: rgba(0, 0, 0, 0.8);
+    margin: 0;
+    padding: 10px;
+    font-weight: 500;
+    color: #00ffe0;
+  }
+
+  @media (max-width: 768px) {
+    iframe {
+      height: 180px;
+    }
+  }
+</style>
+</head>
+<body>
+<header><a href="index.html">🏠 Home</a></header>
+
+<main class="video-container">
+<h2>🎬 Video Lessons</h2>
+<div class="video-grid">
+
+  <!-- HTML Tutorial -->
+  <div class="video-card">
+    <iframe src="https://www.youtube.com/embed/pQN-pnXPaVg" title="HTML Tutorial"></iframe>
+    <p>Learn HTML Basics</p>
+  </div>
+
+  <!-- CSS Tutorial -->
+  <div class="video-card">
+    <iframe src="https://www.youtube.com/embed/yfoY53QXEnI" title="CSS Crash Course"></iframe>
+    <p>CSS Crash Course</p>
+  </div>
+
+  <!-- JavaScript Tutorial -->
+  <div class="video-card">
+    <iframe src="https://www.youtube.com/embed/W6NZfCO5SIk" title="JavaScript for Beginners"></iframe>
+    <p>JavaScript for Beginners</p>
+  </div>
+
+  <!-- Responsive Web Design -->
+  <div class="video-card">
+    <iframe src="https://www.youtube.com/embed/srvUrASNj0s" title="Responsive Web Design"></iframe>
+    <p>Responsive Web Design with HTML & CSS</p>
+  </div>
+
+  <!-- Bootstrap Tutorial -->
+  <div class="video-card">
+    <iframe src="https://www.youtube.com/embed/-qfEOE4vtxE" title="Bootstrap 5 Tutorial"></iframe>
+    <p>Bootstrap 5 Full Course</p>
+  </div>
+
+  <!-- DOM Manipulation -->
+  <div class="video-card">
+    <iframe src="https://www.youtube.com/embed/0ik6X4DJKCc" title="JavaScript DOM"></iframe>
+    <p>Master JavaScript DOM Manipulation</p>
+  </div>
+
+  <!-- Python Basics -->
+  <div class="video-card">
+    <iframe src="https://www.youtube.com/embed/_uQrJ0TkZlc" title="Python for Beginners"></iframe>
+    <p>Python for Beginners</p>
+  </div>
+
+  <!-- Git and GitHub -->
+  <div class="video-card">
+    <iframe src="https://www.youtube.com/embed/RGOj5yH7evk" title="Git and GitHub Crash Course"></iframe>
+    <p>Git and GitHub Crash Course</p>
+  </div>
+
+</div>
+</main>
+</body>
+</html>
