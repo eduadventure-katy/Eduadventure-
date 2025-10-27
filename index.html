@@ -95,6 +95,11 @@ if (!user) {
   alert("Please login first!");
   window.location.href = "login.html";
 }
+  <link rel="manifest" href="manifest.json">
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js')
+      .then(() => console.log('Service Worker registered'))
+      .catch(err => console.log('Service Worker failed:', err));
 
 document.getElementById("welcome").textContent = user.role === "creator"
   ? "👑 Welcome Creator " + user.name + "!"
