@@ -1,0 +1,22 @@
+{
+  "name": "EduAdventure",
+  "short_name": "EduAdventure",
+  "description": "EduAdventure is a fun and interactive app for learning programming through tutorials, videos, quizzes, and challenges.",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#4CAF50",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
